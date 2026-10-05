@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Integrales Impropias
+    </title>
+
+
+    <!-- MathLive -->
+
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathlive"
+    ></script>
+
+
+    <!-- Plotly -->
+
+    <script
+        src="https://cdn.plot.ly/plotly-2.35.2.min.js"
+    ></script>
+
+
+    <!-- Math.js -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/mathjs@14/lib/browser/math.js"
+    ></script>
+
+
+    <link
+        rel="stylesheet"
+        href="css/styles.css"
+    >
+    <link
+    rel="stylesheet"
+    href="css/presentacion.css"
+>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     ENCABEZADO
+     ========================================================= -->
+
+<header class="encabezado">
+
+    <div class="encabezado-contenido">
+
+
+        <div class="marca">
+            ∫
+        </div>
+
+
+        <div>
+
+            <p class="subtitulo">
+                CÁLCULO II
+            </p>
+
+
+            <h1>
+                Integrales Impropias
+            </h1>
+
+
+            <p class="descripcion">
+
+                Calculadora matemática,
+                graficador y analizador interactivo
+
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PESTAÑAS
+     ========================================================= -->
+
+<nav class="barra-modos">
+
+
+    <button
+        id="tabCalculadora"
+        class="tab-modo activo"
+        data-vista="calculadora"
+    >
+
+        Calculadora de integrales
+
+    </button>
+
+
+    <button
+        id="tabConstructor"
+        class="tab-modo"
+        data-vista="constructor"
+    >
+
+        Constructor de funciones
+
+    </button>
+
+</nav>
+
+
+<!-- =========================================================
+     VISTA CALCULADORA
+     ========================================================= -->
+
+<section
+    id="vistaCalculadora"
+    class="vista-tab activa"
+>
+
+
+<main class="contenedor">
+
+
+    <!-- =====================================================
+         01 - CALCULADORA
+         ===================================================== -->
+
+    <section class="panel panel-calculadora">
+
+
+        <div class="titulo-panel">
+
+
+            <span class="numero-panel">
+                01
+            </span>
+
+
+            <div>
+
+                <h2>
+                    Calculadora
+                </h2>
+
+
+                <p>
+                    Introduce la función y sus límites
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <label class="etiqueta">
+
+            Función f(x)
+
+        </label>
+
+
+        <math-field
+            id="campoFuncion"
+            class="campo-matematico"
+        >\frac{1}{x^2}</math-field>
+
+
+        <!-- TECLADO -->
+
+        <div class="teclado-matematico">
+
+
+            <button
+                class="tecla"
+                data-comando="\frac{\placeholder{}}{\placeholder{}}"
+            >
+
+                <span class="fraccion-visual">
+
+                    <span>a</span>
+
+                    <span>b</span>
+
+                </span>
+
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="^{\placeholder{}}"
+            >
+                xⁿ
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="^{\frac{\placeholder{}}{\placeholder{}}}"
+            >
+                xᵃ⁄ᵇ
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\sqrt{\placeholder{}}"
+            >
+                √x
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\ln(\placeholder{})"
+            >
+                ln
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\sin(\placeholder{})"
+            >
+                sin
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\cos(\placeholder{})"
+            >
+                cos
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\tan(\placeholder{})"
+            >
+                tan
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="e^{\placeholder{}}"
+            >
+                eˣ
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\pi"
+            >
+                π
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="x"
+            >
+                x
+            </button>
+
+
+            <button
+                class="tecla"
+                data-comando="\infty"
+            >
+                ∞
+            </button>
+
+        </div>
+
+
+        <!-- LÍMITES -->
+
+        <div class="grupo-limites">
+
+
+            <div>
+
+                <label class="etiqueta">
+                    Límite inferior
+                </label>
+
+
+                <math-field
+                    id="limiteInferior"
+                    class="campo-limite"
+                >1</math-field>
+
+            </div>
+
+
+            <div>
+
+                <label class="etiqueta">
+                    Límite superior
+                </label>
+
+
+                <math-field
+                    id="limiteSuperior"
+                    class="campo-limite"
+                >\infty</math-field>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="btnResolver"
+            class="boton-resolver"
+        >
+
+            Resolver y graficar
+
+        </button>
+
+
+        <!-- EJEMPLOS -->
+
+        <div class="zona-ejemplos">
+
+
+            <span class="titulo-ejemplos">
+
+                Ejemplos rápidos
+
+            </span>
+
+
+            <div>
+
+
+                <button
+                    class="btn-ejemplo"
+                    data-funcion="\frac{1}{x^2}"
+                    data-inferior="1"
+                    data-superior="\infty"
+                >
+
+                    1/x²
+
+                </button>
+
+
+                <button
+                    class="btn-ejemplo"
+                    data-funcion="\frac{1}{x}"
+                    data-inferior="1"
+                    data-superior="\infty"
+                >
+
+                    1/x
+
+                </button>
+
+
+                <button
+                    class="btn-ejemplo"
+                    data-funcion="\frac{1}{\sqrt{x}}"
+                    data-inferior="0"
+                    data-superior="1"
+                >
+
+                    1/√x
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         02 - GRÁFICA
+         ===================================================== -->
+
+    <section class="panel panel-grafica">
+
+
+        <div class="titulo-panel grafica-header">
+
+
+            <div class="titulo-izquierda">
+
+
+                <span class="numero-panel">
+                    02
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Gráfica
+                    </h2>
+
+
+                    <p>
+                        Representación cartesiana interactiva
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="etiqueta-2d">
+
+                2D INTERACTIVO
+
+            </span>
+
+        </div>
+
+
+        <div
+            id="grafica"
+            class="grafica"
+        >
+        </div>
+
+
+        <div class="leyenda-grafica">
+
+
+            <div class="leyenda-item">
+
+                <span
+                    class="leyenda-linea funcion"
+                ></span>
+
+                Función
+
+            </div>
+
+
+            <div class="leyenda-item">
+
+                <span
+                    class="leyenda-area"
+                ></span>
+
+                Área
+
+            </div>
+
+
+            <div class="leyenda-item">
+
+                <span
+                    class="leyenda-linea limite"
+                ></span>
+
+                Límite
+
+            </div>
+
+
+            <div class="leyenda-item">
+
+                <span
+                    class="leyenda-linea exploracion"
+                ></span>
+
+                Límite visual
+
+            </div>
+
+
+            <div class="leyenda-item">
+
+                <span
+                    class="leyenda-linea singularidad"
+                ></span>
+
+                Singularidad
+
+            </div>
+
+        </div>
+
+
+        <div class="mensaje-interactivo">
+
+            <strong>
+                Modo interactivo:
+            </strong>
+
+            las líneas azules modifican los límites reales.
+
+            Cuando exista infinito,
+            la línea verde permite explorar
+            el límite visualmente.
+
+        </div>
+
+
+        <!-- EXPLORACIÓN -->
+
+        <div
+            id="panelExploracion"
+            class="panel-exploracion oculto"
+        >
+
+
+            <div class="exploracion-header">
+
+
+                <div>
+
+                    <span class="mini-titulo mini-titulo-verde">
+                        Exploración interactiva
+                    </span>
+
+
+                    <h3>
+                        Visualización del límite
+                    </h3>
+
+                </div>
+
+
+                <span
+                    id="parametroExploracion"
+                    class="badge-parametro"
+                >
+
+                    b → ∞
+
+                </span>
+
+            </div>
+
+
+            <p
+                id="textoExploracion"
+                class="texto-exploracion"
+            >
+            </p>
+
+
+            <div class="formula-exploracion">
+
+                <math-field
+                    id="formulaExploracion"
+                    read-only
+                ></math-field>
+
+            </div>
+
+
+            <div class="exploracion-datos">
+
+
+                <div class="dato-exploracion">
+
+                    <span>
+                        Valor actual
+                    </span>
+
+                    <strong
+                        id="valorParametroExploracion"
+                    >
+                    </strong>
+
+                </div>
+
+
+                <div class="dato-exploracion">
+
+                    <span>
+                        Integral parcial
+                    </span>
+
+                    <strong
+                        id="valorIntegralParcial"
+                    >
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="slider-contenedor">
+
+                <input
+                    type="range"
+                    id="sliderInfinito"
+                    class="slider-infinito"
+                >
+
+            </div>
+
+
+            <div class="botones-distancia">
+
+                <span>
+                    Probar distancia:
+                </span>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="2"
+                >
+                    2
+                </button>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="5"
+                >
+                    5
+                </button>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="10"
+                >
+                    10
+                </button>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="25"
+                >
+                    25
+                </button>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="50"
+                >
+                    50
+                </button>
+
+
+                <button
+                    class="btn-distancia"
+                    data-distancia="100"
+                >
+                    100
+                </button>
+
+            </div>
+
+
+            <p class="nota-exploracion">
+
+                El límite original continúa siendo infinito.
+                Este control únicamente permite visualizar
+                su comportamiento.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-grafica">
+
+            <span>
+                Arrastra para mover
+            </span>
+
+            <span>
+                Rueda del mouse para zoom
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         03 - ANÁLISIS
+         ===================================================== -->
+
+    <section class="panel panel-resultado">
+
+
+        <div class="titulo-panel">
+
+
+            <span class="numero-panel">
+                03
+            </span>
+
+
+            <div>
+
+                <h2>
+                    Análisis matemático
+                </h2>
+
+
+                <p>
+                    Clasificación,
+                    resultado y procedimiento
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="estadoInicial"
+            class="estado-inicial"
+        >
+
+            Introduce una función y presiona
+
+            <strong>
+                Resolver y graficar
+            </strong>.
+
+        </div>
+
+
+        <div
+            id="resultadoContenido"
+            class="oculto"
+        >
+
+
+            <div class="resumen-analisis">
+
+
+                <article class="tarjeta-resumen">
+
+                    <span class="mini-titulo">
+                        Tipo de integral
+                    </span>
+
+
+                    <div
+                        id="tipoIntegral"
+                        class="tipo-integral"
+                    >
+                    </div>
+
+                </article>
+
+
+                <article class="tarjeta-resumen">
+
+                    <span class="mini-titulo">
+                        Puntos problemáticos
+                    </span>
+
+
+                    <div
+                        id="singularidades"
+                        class="singularidades"
+                    >
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div
+                id="motivoIntegral"
+                class="motivo-integral"
+            >
+            </div>
+
+
+            <div class="integral-principal">
+
+                <span class="mini-titulo">
+                    Integral analizada
+                </span>
+
+
+                <math-field
+                    id="integralResultado"
+                    read-only
+                    class="formula-grande"
+                ></math-field>
+
+            </div>
+
+
+            <div class="tarjetas-resultados">
+
+
+                <article class="tarjeta">
+
+                    <span class="mini-titulo">
+                        Resultado exacto
+                    </span>
+
+
+                    <math-field
+                        id="resultadoExacto"
+                        read-only
+                        class="formula-resultado"
+                    ></math-field>
+
+                </article>
+
+
+                <article class="tarjeta">
+
+                    <span class="mini-titulo">
+                        Aproximación decimal
+                    </span>
+
+
+                    <div
+                        id="resultadoDecimal"
+                        class="resultado-decimal"
+                    >
+                    </div>
+
+                </article>
+
+
+                <article class="tarjeta">
+
+                    <span class="mini-titulo">
+                        Clasificación
+                    </span>
+
+
+                    <div
+                        id="clasificacion"
+                        class="clasificacion"
+                    >
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="procedimiento-contenedor">
+
+
+                <div class="procedimiento-header">
+
+
+                    <div>
+
+                        <span class="mini-titulo">
+                            Desarrollo
+                        </span>
+
+
+                        <h3>
+                            Procedimiento paso a paso
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="procedimiento"
+                    class="procedimiento"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="mensajeError"
+            class="mensaje-error oculto"
+        >
+        </div>
+
+    </section>
+
+</main>
+
+</section>
+
+
+<!-- =========================================================
+     VISTA CONSTRUCTOR
+     ========================================================= -->
+
+<section
+    id="vistaConstructor"
+    class="vista-tab"
+>
+
+
+<main class="constructor-contenedor">
+
+
+    <!-- CONTROLES -->
+
+    <section class="panel constructor-controles">
+
+
+        <div class="titulo-panel">
+
+
+            <span class="numero-panel">
+                01
+            </span>
+
+
+            <div>
+
+                <h2>
+                    Constructor
+                </h2>
+
+
+                <p>
+                    Crea funciones moviendo elementos
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <label class="etiqueta">
+
+            Familia de función
+
+        </label>
+
+
+        <select
+            id="tipoConstructor"
+            class="selector-constructor"
+        >
+
+            <option value="lineal">
+                Recta — y = mx + b
+            </option>
+
+
+            <option value="parabola">
+                Parábola — y = a(x-h)² + k
+            </option>
+
+
+            <option value="racional">
+                Racional — y = a/(x-h) + k
+            </option>
+
+        </select>
+
+
+        <div class="ecuacion-constructor-box">
+
+            <span class="mini-titulo">
+                Ecuación generada
+            </span>
+
+
+            <math-field
+                id="ecuacionConstructor"
+                read-only
+                class="formula-constructor"
+            ></math-field>
+
+        </div>
+
+
+        <div>
+
+            <span class="mini-titulo">
+                Parámetros actuales
+            </span>
+
+
+            <div
+                id="parametrosConstructor"
+                class="parametros-constructor"
+            >
+            </div>
+
+        </div>
+
+
+        <div
+            id="ayudaConstructor"
+            class="constructor-ayuda"
+        >
+        </div>
+
+
+        <button
+            id="btnUsarFuncion"
+            class="boton-usar-funcion"
+        >
+
+            Usar esta función en la calculadora
+
+        </button>
+
+
+        <button
+            id="btnRestablecerConstructor"
+            class="boton-secundario"
+        >
+
+            Restablecer función
+
+        </button>
+
+    </section>
+
+
+    <!-- GRÁFICA CONSTRUCTOR -->
+
+    <section class="panel constructor-grafica-panel">
+
+
+        <div class="titulo-panel grafica-header">
+
+
+            <div class="titulo-izquierda">
+
+
+                <span class="numero-panel">
+                    02
+                </span>
+
+
+                <div>
+
+                    <h2>
+                        Editor gráfico
+                    </h2>
+
+
+                    <p>
+                        Arrastra los controles sobre el plano
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <span class="etiqueta-constructor">
+                EDITABLE
+            </span>
+
+        </div>
+
+
+        <div
+            id="graficaConstructor"
+            class="grafica-constructor"
+        >
+        </div>
+
+
+        <div class="constructor-leyenda">
+
+
+            <span>
+
+                <span class="punto-demo"></span>
+
+                Punto de control
+
+            </span>
+
+
+            <span>
+
+                <span class="linea-demo"></span>
+
+                Elemento arrastrable
+
+            </span>
+
+        </div>
+
+
+        <div class="mensaje-constructor">
+
+            Arrastra los puntos o las líneas de control.
+            La ecuación se actualizará automáticamente.
+
+        </div>
+
+    </section>
+
+</main>
+
+</section>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script
+    src="js/grafica.js"
+></script>
+
+
+<script
+    src="js/app.js"
+></script>
+
+
+<script
+    src="js/constructor.js"
+></script>
+
+
+</body>
+
+</html>

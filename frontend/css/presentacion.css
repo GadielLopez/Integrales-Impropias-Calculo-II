@@ -1,0 +1,902 @@
+:root {
+
+    --presentacion-azul:
+        #3563e9;
+
+    --presentacion-azul-oscuro:
+        #172033;
+
+    --presentacion-azul-suave:
+        #eef3ff;
+
+    --presentacion-borde:
+        #dce4f0;
+
+    --presentacion-texto:
+        #344054;
+
+    --presentacion-secundario:
+        #667085;
+
+    --presentacion-fondo:
+        #f8fafc;
+
+    --presentacion-verde:
+        #118653;
+
+    --presentacion-verde-suave:
+        #ecf9f2;
+
+    --presentacion-rojo:
+        #c83d4b;
+
+    --presentacion-rojo-suave:
+        #fff0f2;
+
+    --presentacion-sombra:
+        0 8px 25px
+        rgba(
+            31,
+            49,
+            85,
+            0.07
+        );
+}
+
+
+/* ========================================================= */
+/* PROCEDIMIENTO GENERAL                                     */
+/* ========================================================= */
+
+#procedimiento {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        18px;
+
+    margin-top:
+        22px;
+
+    padding:
+        4px 2px
+        10px 58px;
+
+    counter-reset:
+        numero-paso;
+}
+
+
+/* ========================================================= */
+/* TARJETAS DE CADA PASO                                     */
+/* ========================================================= */
+
+#procedimiento
+.paso-procedimiento {
+
+    position:
+        relative;
+
+    counter-increment:
+        numero-paso;
+
+    padding:
+        20px 22px;
+
+    border:
+        1px solid
+        var(
+            --presentacion-borde
+        );
+
+    border-radius:
+        16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #fbfcff 100%
+        );
+
+    box-shadow:
+        var(
+            --presentacion-sombra
+        );
+
+    transition:
+        transform
+        0.18s
+        ease,
+        box-shadow
+        0.18s
+        ease,
+        border-color
+        0.18s
+        ease;
+
+    animation:
+        entradaPaso
+        0.35s
+        ease
+        both;
+}
+
+
+#procedimiento
+.paso-procedimiento:hover {
+
+    transform:
+        translateY(
+            -2px
+        );
+
+    border-color:
+        #b9c9f7;
+
+    box-shadow:
+        0 12px 30px
+        rgba(
+            31,
+            49,
+            85,
+            0.10
+        );
+}
+
+
+/* ========================================================= */
+/* CÍRCULO DE NUMERACIÓN                                     */
+/* ========================================================= */
+
+#procedimiento
+.paso-procedimiento::before {
+
+    content:
+        counter(
+            numero-paso
+        );
+
+    position:
+        absolute;
+
+    left:
+        -58px;
+
+    top:
+        18px;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border:
+        4px solid
+        #f4f7fb;
+
+    border-radius:
+        50%;
+
+    background:
+        var(
+            --presentacion-azul
+        );
+
+    color:
+        #ffffff;
+
+    font-size:
+        13px;
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            53,
+            99,
+            233,
+            0.25
+        );
+
+    z-index:
+        2;
+}
+
+
+/* ========================================================= */
+/* LÍNEA VERTICAL                                            */
+/* ========================================================= */
+
+#procedimiento
+.paso-procedimiento:not(
+    :last-child
+)::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        -39px;
+
+    top:
+        54px;
+
+    width:
+        2px;
+
+    height:
+        calc(
+            100%
+            +
+            22px
+        );
+
+    background:
+        linear-gradient(
+            to bottom,
+            #9eb4f5,
+            #dbe3f7
+        );
+
+    z-index:
+        1;
+}
+
+
+/* ========================================================= */
+/* TÍTULO DEL PASO                                           */
+/* ========================================================= */
+
+#procedimiento
+.paso-titulo {
+
+    margin:
+        0 0 8px;
+
+    color:
+        var(
+            --presentacion-azul-oscuro
+        );
+
+    font-size:
+        16px;
+
+    font-weight:
+        750;
+
+    line-height:
+        1.35;
+}
+
+
+/* ========================================================= */
+/* EXPLICACIÓN                                               */
+/* ========================================================= */
+
+#procedimiento
+.paso-texto {
+
+    margin:
+        0 0 14px;
+
+    max-width:
+        950px;
+
+    color:
+        var(
+            --presentacion-secundario
+        );
+
+    font-size:
+        13px;
+
+    line-height:
+        1.65;
+}
+
+
+/* ========================================================= */
+/* BLOQUE DE FÓRMULA                                         */
+/* ========================================================= */
+
+#procedimiento
+.formula-paso {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    min-height:
+        55px;
+
+    box-sizing:
+        border-box;
+
+    margin-top:
+        10px;
+
+    padding:
+        13px 16px;
+
+    border:
+        1px solid
+        #dde5f2;
+
+    border-radius:
+        11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8faff,
+            #ffffff
+        );
+
+    color:
+        #182230;
+
+    font-size:
+        23px;
+
+    overflow-x:
+        auto;
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        var(
+            --presentacion-azul
+        );
+}
+
+
+#procedimiento
+.formula-paso:focus {
+
+    outline:
+        none;
+}
+
+
+/* ========================================================= */
+/* PRIMER PASO                                               */
+/* ========================================================= */
+
+#procedimiento
+.paso-procedimiento:first-child {
+
+    border-color:
+        #cad6fa;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f9ff,
+            #ffffff
+        );
+}
+
+
+/* ========================================================= */
+/* ÚLTIMO PASO / CONCLUSIÓN                                  */
+/* ========================================================= */
+
+#procedimiento
+.paso-procedimiento:last-child {
+
+    border-color:
+        #bfe8d2;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f3fbf7,
+            #ffffff
+        );
+}
+
+
+#procedimiento
+.paso-procedimiento:last-child::before {
+
+    background:
+        var(
+            --presentacion-verde
+        );
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            17,
+            134,
+            83,
+            0.25
+        );
+}
+
+
+#procedimiento
+.paso-procedimiento:last-child
+.formula-paso {
+
+    border-color:
+        #cceadb;
+
+    background:
+        #f7fcf9;
+
+    box-shadow:
+        inset
+        3px
+        0
+        0
+        var(
+            --presentacion-verde
+        );
+}
+
+
+/* ========================================================= */
+/* CLASIFICACIÓN                                             */
+/* ========================================================= */
+
+.clasificacion {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    min-width:
+        110px;
+
+    padding:
+        7px 13px;
+
+    border-radius:
+        50px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.4px;
+
+    text-transform:
+        uppercase;
+}
+
+
+.clasificacion.convergente {
+
+    color:
+        var(
+            --presentacion-verde
+        );
+
+    background:
+        var(
+            --presentacion-verde-suave
+        );
+
+    border:
+        1px solid
+        #c8ead9;
+}
+
+
+.clasificacion.divergente {
+
+    color:
+        var(
+            --presentacion-rojo
+        );
+
+    background:
+        var(
+            --presentacion-rojo-suave
+        );
+
+    border:
+        1px solid
+        #ffd2d8;
+}
+
+
+.clasificacion.indeterminado {
+
+    color:
+        #946200;
+
+    background:
+        #fff8df;
+
+    border:
+        1px solid
+        #f0dfa8;
+}
+
+
+/* ========================================================= */
+/* ANÁLISIS DETALLADO POR TRAMOS                             */
+/* ========================================================= */
+
+.analisis-tramos-detallado {
+
+    margin-top:
+        26px !important;
+
+    padding:
+        22px !important;
+
+    border:
+        1px solid
+        var(
+            --presentacion-borde
+        ) !important;
+
+    border-radius:
+        18px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fafbff
+        ) !important;
+
+    box-shadow:
+        var(
+            --presentacion-sombra
+        );
+}
+
+
+.timeline-header {
+
+    margin-bottom:
+        26px !important;
+}
+
+
+.timeline-header h3 {
+
+    font-size:
+        21px !important;
+
+    color:
+        var(
+            --presentacion-azul-oscuro
+        ) !important;
+}
+
+
+.timeline-mini {
+
+    padding:
+        4px 8px;
+
+    display:
+        inline-block !important;
+
+    border-radius:
+        6px;
+
+    background:
+        var(
+            --presentacion-azul-suave
+        );
+
+    color:
+        var(
+            --presentacion-azul
+        ) !important;
+}
+
+
+.timeline-contenido {
+
+    border-radius:
+        14px !important;
+
+    box-shadow:
+        0 5px 16px
+        rgba(
+            31,
+            49,
+            85,
+            0.05
+        );
+}
+
+
+.formula-tramo,
+.formula-evaluacion-tramo {
+
+    padding:
+        13px 15px !important;
+
+    border-radius:
+        10px !important;
+
+    background:
+        #f9fbfe !important;
+
+    font-size:
+        21px !important;
+}
+
+
+/* ========================================================= */
+/* PANEL DE TRAMOS DE LA GRÁFICA                             */
+/* ========================================================= */
+
+.panel-tramos {
+
+    border-radius:
+        16px !important;
+
+    box-shadow:
+        0 6px 20px
+        rgba(
+            31,
+            49,
+            85,
+            0.06
+        );
+}
+
+
+.tramo-item {
+
+    transition:
+        transform
+        0.15s
+        ease,
+        box-shadow
+        0.15s
+        ease;
+}
+
+
+.tramo-item:hover {
+
+    transform:
+        translateY(
+            -2px
+        );
+
+    box-shadow:
+        0 5px 12px
+        rgba(
+            31,
+            49,
+            85,
+            0.08
+        );
+}
+
+
+/* ========================================================= */
+/* CAMPOS MATEMÁTICOS DE SOLO LECTURA                        */
+/* ========================================================= */
+
+math-field[read-only] {
+
+    cursor:
+        default;
+
+    --caret-color:
+        transparent;
+
+    --selection-background-color:
+        rgba(
+            53,
+            99,
+            233,
+            0.10
+        );
+}
+
+
+/* ========================================================= */
+/* ANIMACIÓN                                                 */
+/* ========================================================= */
+
+@keyframes entradaPaso {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(
+                8px
+            );
+    }
+
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(
+                0
+            );
+    }
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(2) {
+
+    animation-delay:
+        0.04s;
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(3) {
+
+    animation-delay:
+        0.08s;
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(4) {
+
+    animation-delay:
+        0.12s;
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(5) {
+
+    animation-delay:
+        0.16s;
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(6) {
+
+    animation-delay:
+        0.20s;
+}
+
+
+#procedimiento
+.paso-procedimiento:nth-child(7) {
+
+    animation-delay:
+        0.24s;
+}
+
+
+/* ========================================================= */
+/* RESPONSIVE                                                */
+/* ========================================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    #procedimiento {
+
+        padding-left:
+            46px;
+    }
+
+
+    #procedimiento
+    .paso-procedimiento {
+
+        padding:
+            16px;
+    }
+
+
+    #procedimiento
+    .paso-procedimiento::before {
+
+        left:
+            -46px;
+
+        width:
+            32px;
+
+        height:
+            32px;
+    }
+
+
+    #procedimiento
+    .paso-procedimiento:not(
+        :last-child
+    )::after {
+
+        left:
+            -31px;
+    }
+
+
+    #procedimiento
+    .formula-paso {
+
+        font-size:
+            18px;
+    }
+
+
+    .analisis-tramos-detallado {
+
+        padding:
+            15px !important;
+    }
+}
+
+
+/* ========================================================= */
+/* IMPRESIÓN / CAPTURAS PARA INFORME                         */
+/* ========================================================= */
+
+@media print {
+
+    #procedimiento
+    .paso-procedimiento {
+
+        break-inside:
+            avoid;
+
+        box-shadow:
+            none;
+    }
+
+
+    #procedimiento
+    .paso-procedimiento:hover {
+
+        transform:
+            none;
+    }
+
+
+    .analisis-tramos-detallado {
+
+        box-shadow:
+            none;
+    }
+}
